@@ -63,10 +63,15 @@ function Promotions() {
     fetchPromotions();
   }, []);
 
+  //Order by promotion sequence
+  promotions.sort((a, b) =>
+    a.sequence > b.sequence ? 1 : b.sequence > a.sequence ? -1 : 0
+  );
+
   return (
     <>
       {promotions.map(promotion => (
-        <ContainerPromotion>
+        <ContainerPromotion key={promotion.id}>
           <ImgPromotion src={promotion.heroImageUrl}></ImgPromotion>
           <ContainerContent>
             <TitlePromotion>{promotion.name}</TitlePromotion>
