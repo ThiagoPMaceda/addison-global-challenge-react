@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 
 const ContainerPromotion = styled.div`
@@ -48,23 +48,39 @@ const ButtonPromotion = styled.button`
 `;
 
 function Promotions() {
+  const [hasError, setErrors] = useState(false);
+  const [promotions, setPromotions] = useState([]);
+
+  async function fetchPromotions() {
+    const res = await fetch('http://www.mocky.io/v2/5bc3b9cc30000012007586b7');
+    res
+      .json()
+      .then(res => setPromotions(res))
+      .catch(err => setErrors(err));
+  }
+
+  useEffect(() => {
+    fetchPromotions();
+  }, []);
+
   return (
-    <ContainerPromotion>
-      <ImgPromotion src='https://via.placeholder.com/600x300'></ImgPromotion>
-      <ContainerContent>
-        <TitlePromotion>Promotion Ten</TitlePromotion>
-        <DescriptionPromotion>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-          aliquip ex ea commodo consequat.
-        </DescriptionPromotion>
-        <ContainerButtons>
-          <ButtonPromotion>Terms & Conditions</ButtonPromotion>
-          <ButtonPromotion>Join Now</ButtonPromotion>
-        </ContainerButtons>
-      </ContainerContent>
-    </ContainerPromotion>
+    <>
+      {promotions.map(promotion => (
+        <ContainerPromotion>
+          <ImgPromotion src={promotion.heroImageUrl}></ImgPromotion>
+          <ContainerContent>
+            <TitlePromotion>{promotion.name}</TitlePromotion>
+            <DescriptionPromotion>{promotion.description}</DescriptionPromotion>
+            <ContainerButtons>
+              <ButtonPromotion>
+                {promotion.termsAndConditionsButtonText}
+              </ButtonPromotion>
+              <ButtonPromotion> {promotion.joinNowButtonText}</ButtonPromotion>
+            </ContainerButtons>
+          </ContainerContent>
+        </ContainerPromotion>
+      ))}
+    </>
   );
 }
 
