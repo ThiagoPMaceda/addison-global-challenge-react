@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 const ContainerPromotion = styled.div`
-  margin-top: 50px;
+  margin-top: 25px;
   padding: 15px;
   display: flex;
   flex-direction: column;
