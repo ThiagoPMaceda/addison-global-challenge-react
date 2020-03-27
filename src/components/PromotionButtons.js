@@ -1,11 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const WrapperButtons = styled.div`
-  display: flex;
-  justify-content: center;
-`;
-
 const Buttons = styled.button`
   padding: 10px;
   outline: none;
@@ -18,13 +13,12 @@ const Buttons = styled.button`
   border-radius: 15px;
 `;
 
-function Button() {
+function PromotionButtons(props) {
   return (
-    <WrapperButtons>
-      <Buttons>All Promotions</Buttons>
-      <Buttons>New Customers</Buttons>
-    </WrapperButtons>
+    <Buttons value={props.value} onClick={props.refetchData}>
+      {props.buttonTitle}
+    </Buttons>
   );
 }
 
-export default Button;
+export default PromotionButtons;
