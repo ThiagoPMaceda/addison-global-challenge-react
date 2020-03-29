@@ -1,11 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const ContainerPromotion = styled.div`
+const PromotionWrapper = styled.div`
   margin-top: 25px;
   padding: 20px 35px;
   display: flex;
   flex-direction: column;
+  max-width: 300px;
 `;
 
 const ImgPromotion = styled.img`
@@ -50,21 +51,19 @@ const ButtonPromotion = styled.button`
 
 function PromotionItem(props) {
   return (
-    <>
-      <ContainerPromotion key={props.id}>
-        <ImgPromotion src={props.heroImageUrl}></ImgPromotion>
-        <ContainerContent>
-          <TitlePromotion>{props.name}</TitlePromotion>
-          <DescriptionPromotion>{props.description}</DescriptionPromotion>
-          <ContainerButtons>
-            <ButtonPromotion>
-              {props.termsAndConditionsButtonText}
-            </ButtonPromotion>
-            <ButtonPromotion> {props.joinNowButtonText}</ButtonPromotion>
-          </ContainerButtons>
-        </ContainerContent>
-      </ContainerPromotion>
-    </>
+    <PromotionWrapper key={props.id}>
+      <ImgPromotion src={props.heroImageUrl}></ImgPromotion>
+      <ContainerContent>
+        <TitlePromotion>{props.name}</TitlePromotion>
+        <DescriptionPromotion>{props.description}</DescriptionPromotion>
+        <ContainerButtons>
+          <ButtonPromotion>
+            {props.termsAndConditionsButtonText}
+          </ButtonPromotion>
+          <ButtonPromotion> {props.joinNowButtonText}</ButtonPromotion>
+        </ContainerButtons>
+      </ContainerContent>
+    </PromotionWrapper>
   );
 }
 

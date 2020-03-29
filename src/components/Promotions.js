@@ -8,6 +8,11 @@ const WrapperButtons = styled.div`
   justify-content: center;
 `;
 
+const ContainerPromotion = styled.div`
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+`;
+
 function Promotions() {
   const [hasError, setErrors] = useState(false);
   const [promotions, setPromotions] = useState([]);
@@ -58,18 +63,22 @@ function Promotions() {
           refetchData={refetchData}
         ></PromotionButtons>
       </WrapperButtons>
-      {promotions.map(promotion => (
-        <PromotionItem
-          key={promotion.id}
-          name={promotion.name}
-          description={promotion.description}
-          heroImageUrl={promotion.heroImageUrl}
-          onlyNewCustomers={promotion.onlyNewCustomers}
-          termsAndConditionsButtonText={promotion.termsAndConditionsButtonText}
-          joinNowButtonText={promotion.joinNowButtonText}
-          sequence={promotion.sequence}
-        ></PromotionItem>
-      ))}
+      <ContainerPromotion>
+        {promotions.map(promotion => (
+          <PromotionItem
+            key={promotion.id}
+            name={promotion.name}
+            description={promotion.description}
+            heroImageUrl={promotion.heroImageUrl}
+            onlyNewCustomers={promotion.onlyNewCustomers}
+            termsAndConditionsButtonText={
+              promotion.termsAndConditionsButtonText
+            }
+            joinNowButtonText={promotion.joinNowButtonText}
+            sequence={promotion.sequence}
+          ></PromotionItem>
+        ))}
+      </ContainerPromotion>
     </>
   );
 }
