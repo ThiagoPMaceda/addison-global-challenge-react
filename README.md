@@ -1,68 +1,52 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Linguagem / Language
 
-## Available Scripts
+1. [pt-br](#Começando)
+2. [en-us](#Getting-started)
 
-In the project directory, you can run:
+# Começando
 
-### `yarn start`
+Clone o projeto na sua máquina e utilize o yarn para instalar as dependecias e rodar o projeto.
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+```
+yarn
+yarn start
+```
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+# Overview
 
-### `yarn test`
+Esse projeto foi desenvolvido com base em um teste para a empresa Addison Global (Link do repo: https://github.com/addisonglobal/web-technical-test). O desafio era criar uma tela que consome, dados de uma API para renderizar as promoções em uma tela. Além disso, as informações devem renderizar dependendo se é um usuário novo ou não.
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Seguindo os requisitos o projeto foi criado utilizando as seguintes tecnologias:
 
-### `yarn build`
+1. React
+2. Styled-components
+3. Flexbox
+4. Grid
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+# Decisões feitas no projeto
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+Depois de analisar os requisitos decidi usar React no Frontend, devido a facilidade, flexibilidade e velocidade que o Framework proporciona para o desenvolvedor. Para estilização dos elementos utilizei Styled-components que permite criar CSS em Javascript, dessa forma, permite a reutilização dos componentes pela a aplicação e acelera o desenvolvimento. Além disso, utilizei Flexbox juntamente com Grid para ajustar o layout e deixa-lo responsivo a todos os tamanhos de tela. Seguindo um dos requisitos do desafio utilizando o mobile-first para desenvolver a aplicação em telas de celulares e a partir disso indo a telas maiores.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+# Getting started
 
-### `yarn eject`
+Clone the project on your machine and use yarn to install the dependencies and run the project.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+```
+yarn
+yarn start
+```
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+# Overview
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+This project was developed based on a test for the company Addison Global (Link from repo: https://github.com/addisonglobal/web-technical-test). The challenge was to create a screen that consumes data from an API to render promotions on a screen. In addition, the information should render depending on whether you are a new user or not.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+Following the requirements the project was created using the following technologies:
 
-## Learn More
+1. React
+2. Styled-components
+3. Flexbox
+4. Grid
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+# Decisions made on the project
 
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `yarn build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+After analyzing the requirements I decided to use React in Frontend, due to the ease, flexibility and speed that the Framework provides for the developer. For stylization of the elements I used Styled-components which allows to create CSS in Javascript, in this way, it allows the reuse of the components by the application and accelerates the development. In addition, I used Flexbox together with Grid to adjust the layout and make it responsive to all screen sizes. Following one of the requirements of the challenge using mobile-first to develop the application on cell phone screens and from there going to larger screens.
