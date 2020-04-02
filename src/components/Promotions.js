@@ -14,7 +14,7 @@ const ContainerPromotion = styled.div`
 `;
 
 // Hook
-function usePrevious(value) {
+const usePrevious = value => {
   // The ref object is a generic container whose current property is mutable ...
   // ... and can hold any value, similar to an instance property on a class
   const ref = useRef();
@@ -26,21 +26,21 @@ function usePrevious(value) {
 
   // Return previous value (happens before update in useEffect above)
   return ref.current;
-}
+};
 
-function Promotions() {
+const Promotions = () => {
   const [hasError, setErrors] = useState(false);
   const [promotions, setPromotions] = useState([]);
   const [disabled, setDisabled] = useState(true);
 
-  async function fetchAllPromotions() {
+  const fetchAllPromotions = async () => {
     const res = await fetch('http://www.mocky.io/v2/5bc3b9cc30000012007586b7');
 
     res
       .json()
       .then(res => setPromotions(res))
       .catch(err => setErrors(err));
-  }
+  };
 
   useEffect(() => {
     fetchAllPromotions();
@@ -53,14 +53,14 @@ function Promotions() {
     a.sequence > b.sequence ? 1 : b.sequence > a.sequence ? -1 : 0
   );
 
-  function promotionsNewUsers() {
+  const promotionsNewUsers = () => {
     const newUsers = promotions.filter(promotion => {
       return promotion.onlyNewCustomers === true;
     });
     return newUsers;
-  }
+  };
 
-  function refetchData(event) {
+  const refetchData = event => {
     if (event.target.value === 'all-promotions') {
       buttonDisabled(disabled);
       setPromotions(prevPromos);
@@ -68,12 +68,12 @@ function Promotions() {
       buttonDisabled(disabled);
       setPromotions(promotionsNewUsers());
     }
-  }
+  };
 
-  function buttonDisabled(state) {
+  const buttonDisabled = state => {
     state = !state;
     setDisabled(state);
-  }
+  };
 
   return (
     <>
@@ -109,6 +109,6 @@ function Promotions() {
       </ContainerPromotion>
     </>
   );
-}
+};
 
 export default Promotions;
