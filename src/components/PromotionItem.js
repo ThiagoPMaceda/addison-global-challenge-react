@@ -49,22 +49,27 @@ const ButtonPromotion = styled.button`
   color: #ffffff;
 `;
 
-function PromotionItem(props) {
+const PromotionItem = ({
+  id,
+  heroImageUrl,
+  name,
+  description,
+  termsAndConditionsButtonText,
+  joinNowButtonText
+}) => {
   return (
-    <PromotionWrapper key={props.id}>
-      <ImgPromotion src={props.heroImageUrl}></ImgPromotion>
+    <PromotionWrapper key={id}>
+      <ImgPromotion src={heroImageUrl}></ImgPromotion>
       <ContainerContent>
-        <TitlePromotion>{props.name}</TitlePromotion>
-        <DescriptionPromotion>{props.description}</DescriptionPromotion>
+        <TitlePromotion>{name}</TitlePromotion>
+        <DescriptionPromotion>{description}</DescriptionPromotion>
         <ContainerButtons>
-          <ButtonPromotion>
-            {props.termsAndConditionsButtonText}
-          </ButtonPromotion>
-          <ButtonPromotion> {props.joinNowButtonText}</ButtonPromotion>
+          <ButtonPromotion>{termsAndConditionsButtonText}</ButtonPromotion>
+          <ButtonPromotion> {joinNowButtonText}</ButtonPromotion>
         </ContainerButtons>
       </ContainerContent>
     </PromotionWrapper>
   );
-}
+};
 
 export default PromotionItem;
