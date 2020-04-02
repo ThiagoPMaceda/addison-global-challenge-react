@@ -17,12 +17,12 @@ const Buttons = styled.button`
   }
 `;
 
-function PromotionButtons({ disabled, value, refetchData, buttonTitle }) {
+const PromotionButtons = ({ disabled, value, refetchData, buttonTitle }) => {
   return (
     <Buttons disabled={disabled} value={value} onClick={refetchData}>
       {buttonTitle}
     </Buttons>
   );
-}
+};
 
 export default PromotionButtons;
