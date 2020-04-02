@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import PromotionButtons from './PromotionButtons';
 import PromotionItem from './PromotionItem';
 import styled from 'styled-components';
@@ -13,12 +13,29 @@ const ContainerPromotion = styled.div`
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
 `;
 
+// Hook
+function usePrevious(value) {
+  // The ref object is a generic container whose current property is mutable ...
+  // ... and can hold any value, similar to an instance property on a class
+  const ref = useRef();
+
+  // Store current value in ref
+  useEffect(() => {
+    ref.current = value;
+  }, [value]); // Only re-run if value changes
+
+  // Return previous value (happens before update in useEffect above)
+  return ref.current;
+}
+
 function Promotions() {
   const [hasError, setErrors] = useState(false);
   const [promotions, setPromotions] = useState([]);
+  const [disabled, setDisabled] = useState(true);
 
   async function fetchAllPromotions() {
     const res = await fetch('http://www.mocky.io/v2/5bc3b9cc30000012007586b7');
+
     res
       .json()
       .then(res => setPromotions(res))
@@ -28,6 +45,8 @@ function Promotions() {
   useEffect(() => {
     fetchAllPromotions();
   }, []);
+
+  const prevPromos = usePrevious(promotions);
 
   //Order by promotion sequence
   promotions.sort((a, b) =>
@@ -43,21 +62,30 @@ function Promotions() {
 
   function refetchData(event) {
     if (event.target.value === 'all-promotions') {
-      fetchAllPromotions();
+      buttonDisabled(disabled);
+      setPromotions(prevPromos);
     } else {
+      buttonDisabled(disabled);
       setPromotions(promotionsNewUsers());
     }
+  }
+
+  function buttonDisabled(state) {
+    state = !state;
+    setDisabled(state);
   }
 
   return (
     <>
       <WrapperButtons>
         <PromotionButtons
+          disabled={disabled}
           value={'all-promotions'}
           buttonTitle={'All Promotions'}
           refetchData={refetchData}
         ></PromotionButtons>
         <PromotionButtons
+          disabled={!disabled}
           value={'new-users'}
           buttonTitle={'New Users'}
           refetchData={refetchData}

@@ -4,9 +4,9 @@ import styled from 'styled-components';
 const Buttons = styled.button`
   padding: 10px;
   outline: none;
-  background: #ffffff;
+  background: ${props => (props.disabled === true ? '#adc5d9' : '#ffffff')};
   border: 1px solid #adc5d9;
-  color: #adc5d9;
+  color: ${props => (props.disabled === true ? '#ffffff' : '#adc5d9')};
   width: 125px;
   text-align: center;
   margin-top: 15px;
@@ -17,10 +17,10 @@ const Buttons = styled.button`
   }
 `;
 
-function PromotionButtons(props) {
+function PromotionButtons({ disabled, value, refetchData, buttonTitle }) {
   return (
-    <Buttons value={props.value} onClick={props.refetchData}>
-      {props.buttonTitle}
+    <Buttons disabled={disabled} value={value} onClick={refetchData}>
+      {buttonTitle}
     </Buttons>
   );
 }
